@@ -1,0 +1,3 @@
+
+logistic function
+Great choice! Computing the derivative is essentially the same as computing the function itself, so this is also a relatively efficient choice.
