@@ -1,3 +1,42 @@
 
+
+Activation function
+
+Arctangenet function
+This function can work well! It could be a bit expensive to compute, which makes another answer slightly better.
+
 logistic function
 Great choice! Computing the derivative is essentially the same as computing the function itself, so this is also a relatively efficient choice.
+
+
+There is question about the difference between a single perceptron and sigmod unit on binary classification problems. The correct answer is "One gives more information but they will give the same answer". The justification given is that the sigmoid networks can be different in many ways, but single units will end up classifying just like perceptrons in the end.
+Yes! Sigmoid networks can be different in many ways, but single units will end up classifying just like perceptrons in the end.
+
+
+
+============================
+For the purposes of the Nanodegree, you do not need to grasp the most technical aspects of the way that SVMs work, only that you gain the major concepts so that you can use them in practice. I think that the second SVM lesson22 in the supplemental materials might be a better reference to obtain the key concepts to understand what is going on. From the two lessons, I would say that the most important parts to take away are the following:
+
+Linear SVMs try to find a hyperplane that best separates two classes of data, where we try to maximize the width of the margin separating the classes while simultaneously minimizing the amount of errors we make.
+
+There is a parameter C that dictates how much penalty a mis-classification counts; a mis-classification is counted if a point is within the margin lines. At higher C, we take a higher penalty, so the margin will be 'hard' and avoid errors. A lower C makes us more willing to make errors in order to achieve a larger margin size.
+
+When we make predictions of new points, it is based on a weighted sum of the dot products between the point we want to test, and a select few points on the margins of the dividing plane (support vectors). We classify our new point based on if the weighted sum is positive or negative.
+
+If we have data that is separable, but not linearly so, we can use a different kernel instead of the dot product to make predictions. This gives us a higher degree of dimensions in which we can separate the data into clusters.
+
+Those are just the basic foundations to start from. A web search should reveal some additional papers or sets of lecture slides that also introduce support vector machines in different ways. There are some supplemental materials attached to the SVM lessons that were part of the non-Nanodegree materials that we will try to free up as noted in this topic17 to help aid learning as well.
+
+
+=============================
+
+lucas_murtinhoMar '16
+Hey @vladislavprh,
+
+As someone who has implemented some machine learning algorithms without really undersanding everything that happens under the hood, I agree with pretty much everything @Jared wrote above :slight_smile: However, if you still wish to know more about SVMs, I have two sources that can be of use:
+
+Week 7 of Andrew Ng's Machine Learning course in Coursera16
+
+Chapter 9 of An Introduction to Statistical Learning with Applications in R, which can be downloaded for free here14
+
+I found both resources to be good explanations of the math behind SVM for beginners.
