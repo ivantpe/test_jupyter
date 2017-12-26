@@ -2,3 +2,6 @@ https://ithelp.ithome.com.tw/articles/10187452
 file:///C:/Users/MLUSER/Documents/GitHub/test/EnsembleLearning.pdf
 
 http://scikit-learn.org/stable/modules/ensemble.html
+
+
+About Adaboost, this short video here is good to undefstand more: https://www.youtube.com/watch?v=GM3CDQfQ4sw&list=PL4zv4UkoVTPflyFDJdJtz248-8Wdz_nct
