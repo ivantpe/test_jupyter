@@ -17,7 +17,7 @@ from time import time
 from sklearn.metrics import f1_score, accuracy_score
 
 
-def distribution(data, transformed = False):
+def distribution(data, features, transformed = False):
     """
     Visualization code for displaying skewed distributions of features
     """
@@ -26,8 +26,11 @@ def distribution(data, transformed = False):
     fig = pl.figure(figsize = (11,5));
 
     # Skewed feature plotting
-    for i, feature in enumerate(['capital-gain','capital-loss']):
-        ax = fig.add_subplot(1, 2, i+1)
+    #for i, feature in enumerate(['capital-gain','capital-loss']):
+    #for i, feature in enumerate(['YearsInCurrentRole','YearsSinceLastPromotion']):
+    for i, feature in enumerate( features ):
+        #ax = fig.add_subplot(1, 2, i+1)
+        ax = fig.add_subplot(1, len(features), i+1)
         ax.hist(data[feature], bins = 25, color = '#00A0A0')
         ax.set_title("'%s' Feature Distribution"%(feature), fontsize = 14)
         ax.set_xlabel("Value")
@@ -120,20 +123,23 @@ def evaluate(results, accuracy, f1):
     
 
 def feature_plot(importances, X_train, y_train):
-    
+    nFeature = 10
     # Display the five most important features
     indices = np.argsort(importances)[::-1]
-    columns = X_train.columns.values[indices[:5]]
-    values = importances[indices][:5]
+    #columns = X_train.columns.values[indices[:5]]
+    columns = X_train.columns.values[indices[: nFeature]]
+    #values = importances[indices][:5]
+    values = importances[indices][: nFeature]
 
     # Creat the plot
-    fig = pl.figure(figsize = (9,5))
+    fig = pl.figure(figsize = (9, nFeature))
     pl.title("Normalized Weights for First Five Most Predictive Features", fontsize = 16)
-    pl.bar(np.arange(5), values, width = 0.6, align="center", color = '#00A000', \
+    #pl.bar(np.arange(5), values, width = 0.6, align="center", color = '#00A000', \
+    pl.bar(np.arange( nFeature ), values, width = 0.6, align="center", color = '#00A000', \
           label = "Feature Weight")
-    pl.bar(np.arange(5) - 0.3, np.cumsum(values), width = 0.2, align = "center", color = '#00A0A0', \
+    pl.bar(np.arange( nFeature ) - 0.3, np.cumsum(values), width = 0.2, align = "center", color = '#00A0A0', \
           label = "Cumulative Feature Weight")
-    pl.xticks(np.arange(5), columns)
+    pl.xticks(np.arange( nFeature ), columns)
     pl.xlim((-0.5, 4.5))
     pl.ylabel("Weight", fontsize = 12)
     pl.xlabel("Feature", fontsize = 12)
