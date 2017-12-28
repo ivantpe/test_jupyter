@@ -1,0 +1,2 @@
+sales, accouting, hr, technical, support, management, IT, product_mgn, marketing, RandD
+low, medium, high
