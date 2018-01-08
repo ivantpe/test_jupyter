@@ -23,7 +23,7 @@ def distribution(data, features, transformed = False):
     """
     
     # Create figure
-    fig = pl.figure(figsize = (11,5));
+    fig = pl.figure(figsize = (11,6));
 
     # Skewed feature plotting
     #for i, feature in enumerate(['capital-gain','capital-loss']):
@@ -35,10 +35,13 @@ def distribution(data, features, transformed = False):
         ax.set_title("'%s' Feature Distribution"%(feature), fontsize = 14)
         ax.set_xlabel("Value")
         ax.set_ylabel("Number of Records")
-        ax.set_ylim((0, 2000))
-        ax.set_yticks([0, 500, 1000, 1500, 2000])
-        ax.set_yticklabels([0, 500, 1000, 1500, ">2000"])
+        ax.set_ylim((0, 6500))
+        #ax.set_yticks([0, 500, 1000, 1500, 2000])
+        #ax.set_yticklabels([0, 500, 1000, 1500, ">2000"])
+        ax.set_yticks([0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500])
+        ax.set_yticklabels([0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, ">6500"])
 
+        
     # Plot aesthetics
     if transformed:
         fig.suptitle("Log-transformed Distributions of Continuous Census Data Features", \
