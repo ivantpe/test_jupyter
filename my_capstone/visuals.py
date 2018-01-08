@@ -125,24 +125,26 @@ def evaluate(results, accuracy, f1):
     pl.show()
     
 
-def feature_plot(importances, X_train, y_train):
-    nFeature = 10
+def feature_plot(importances, X_train, y_train, nFeatures = 5):
+    #nFeature = 10
     # Display the five most important features
     indices = np.argsort(importances)[::-1]
     #columns = X_train.columns.values[indices[:5]]
-    columns = X_train.columns.values[indices[: nFeature]]
+    columns = X_train.columns.values[indices[: nFeatures]]
     #values = importances[indices][:5]
-    values = importances[indices][: nFeature]
+    values = importances[indices][: nFeatures]
 
     # Creat the plot
-    fig = pl.figure(figsize = (9, nFeature))
-    pl.title("Normalized Weights for First Five Most Predictive Features", fontsize = 16)
+    fig = pl.figure(figsize = (9, nFeatures))
+    tmpTitle = title = "Normalized Weights for First {} Most Predictive Features".format(nFeatures)
+    #pl.title("Normalized Weights for First Five Most Predictive Features", fontsize = 16)
+    pl.title(tmpTitle, fontsize = 16)
     #pl.bar(np.arange(5), values, width = 0.6, align="center", color = '#00A000', \
-    pl.bar(np.arange( nFeature ), values, width = 0.6, align="center", color = '#00A000', \
+    pl.bar(np.arange( nFeatures ), values, width = 0.6, align="center", color = '#00A000', \
           label = "Feature Weight")
-    pl.bar(np.arange( nFeature ) - 0.3, np.cumsum(values), width = 0.2, align = "center", color = '#00A0A0', \
+    pl.bar(np.arange( nFeatures ) - 0.3, np.cumsum(values), width = 0.2, align = "center", color = '#00A0A0', \
           label = "Cumulative Feature Weight")
-    pl.xticks(np.arange( nFeature ), columns)
+    pl.xticks(np.arange( nFeatures ), columns)
     pl.xlim((-0.5, 4.5))
     pl.ylabel("Weight", fontsize = 12)
     pl.xlabel("Feature", fontsize = 12)
